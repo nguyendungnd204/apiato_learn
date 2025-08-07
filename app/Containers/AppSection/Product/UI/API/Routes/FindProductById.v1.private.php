@@ -22,5 +22,4 @@
 use App\Containers\AppSection\Product\UI\API\Controllers\FindProductByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('products/{id}', FindProductByIdController::class)
-    ->middleware(['auth:api']);
+Route::get('products/{id}', FindProductByIdController::class);

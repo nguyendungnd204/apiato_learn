@@ -19,8 +19,11 @@ final class FindProductByIdRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasApiAccess',
-        ]);
+        return true;
+    }
+
+    public function sanitizeInput(): array
+    {
+        return $this->validated();
     }
 }

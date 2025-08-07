@@ -18,8 +18,11 @@ final class CreateProductRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasApiAccess',
-        ]);
+        return true; // Authorization logic can be added here if needed
+    }
+    
+    public function sanitizeInput(): array
+    {
+        return $this->validated();
     }
 }
