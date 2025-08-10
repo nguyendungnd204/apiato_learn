@@ -1,0 +1,6 @@
+{
+    "name": "apiato/student",
+    "description": "Student Container",
+    "type": "apiato-container",
+    "require": {}
+}
