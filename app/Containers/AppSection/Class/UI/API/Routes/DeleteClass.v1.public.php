@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           Student
- * @apiName            Create
+ * @apiGroup           Class
+ * @apiName            Delete
  *
- * @api                {POST} /v1/students Invoke
+ * @api                {DELETE} /v1/classes/:id Invoke
  * @apiDescription     Endpoint description here...
  *
  * @apiVersion         1.0.0
@@ -22,8 +22,9 @@
  * }
  */
 
-use App\Containers\AppSection\Student\UI\API\Controllers\CreateStudentController;
+use App\Containers\AppSection\Class\UI\API\Controllers\DeleteClassController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('students', CreateStudentController::class);
+Route::delete('classes/{id}', DeleteClassController::class)
+    ->middleware(['auth:api']);
 

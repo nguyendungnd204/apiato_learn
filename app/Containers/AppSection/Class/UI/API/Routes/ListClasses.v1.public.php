@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           Student
- * @apiName            Create
+ * @apiGroup           Class
+ * @apiName            List
  *
- * @api                {POST} /v1/students Invoke
+ * @api                {GET} /v1/classes Invoke
  * @apiDescription     Endpoint description here...
  *
  * @apiVersion         1.0.0
@@ -22,8 +22,9 @@
  * }
  */
 
-use App\Containers\AppSection\Student\UI\API\Controllers\CreateStudentController;
+use App\Containers\AppSection\Class\UI\API\Controllers\ListClassesController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('students', CreateStudentController::class);
+Route::get('classes', ListClassesController::class)
+    ->middleware(['auth:api']);
 

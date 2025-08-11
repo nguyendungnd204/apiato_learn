@@ -25,6 +25,5 @@
 use App\Containers\AppSection\Student\UI\API\Controllers\ListStudentsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('students', ListStudentsController::class)
-    ->middleware(['auth:api']);
+Route::get('students', ListStudentsController::class);
 

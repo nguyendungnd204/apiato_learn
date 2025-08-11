@@ -1,0 +1,6 @@
+{
+    "name": "apiato/class",
+    "description": "Class Container",
+    "type": "apiato-container",
+    "require": {}
+}

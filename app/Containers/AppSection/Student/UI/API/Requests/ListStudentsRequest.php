@@ -12,4 +12,8 @@ final class ListStudentsRequest extends ParentRequest
     {
         return [];
     }
+    public function authorize(): bool
+    {
+        return true; // Authorization logic can be added here if needed
+    }
 }

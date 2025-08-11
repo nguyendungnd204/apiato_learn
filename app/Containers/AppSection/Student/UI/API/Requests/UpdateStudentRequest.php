@@ -12,6 +12,17 @@ final class UpdateStudentRequest extends ParentRequest
 
     public function rules(): array
     {
-        return [];
+        return [
+            'first_name' => 'sometimes|string|max:255',
+            'last_name' => 'sometimes|string|max:255',
+            'dob' => 'sometimes|date',
+            'gender' => 'sometimes|in:male,female,other',
+            'email' => 'sometimes|email|max:255|unique:students,email,' . $this->id,
+            'phone' => 'sometimes|string|max:255',
+            'address' => 'sometimes|string|max:255',
+            'class' => 'sometimes|string|max:255',
+            'major' => 'sometimes|string|max:255',
+            'enrollment_date' => 'nullable|date',
+        ];
     }
 }

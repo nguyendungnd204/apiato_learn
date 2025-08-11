@@ -17,7 +17,17 @@ final class UpdateStudentAction extends ParentAction
     public function run(UpdateStudentRequest $request): Student
     {
         $data = $request->sanitize([
-            // add your request data here
+            'student_code',
+            'first_name',
+            'last_name',
+            'dob',
+            'gender',
+            'email',
+            'phone',
+            'address',
+            'class',
+            'major',
+            'enrollment_date'
         ]);
 
         return $this->updateStudentTask->run($data, $request->id);
