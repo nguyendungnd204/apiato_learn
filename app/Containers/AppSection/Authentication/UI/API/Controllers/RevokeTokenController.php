@@ -9,24 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
 /**
- * @OA\Post(
- *     path="/logout",
- *     tags={"Authentication"},
- *     summary="User Logout",
- *     description="Revoke user's access token and logout",
- *     security={{"bearer":{}}},
- *     @OA\Response(
- *         response=202,
- *         description="Token revoked successfully",
- *         @OA\JsonContent(
- *             @OA\Property(property="message", type="string", example="Token revoked successfully.")
- *         )
- *     ),
- *     @OA\Response(
- *         response=401,
- *         description="Unauthorized"
- *     )
- * )
+ * Class RevokeTokenController
+ *
+ * @package App\Containers\AppSection\Authentication\UI\API\Controllers
  */
 final class RevokeTokenController extends ApiController
 {
