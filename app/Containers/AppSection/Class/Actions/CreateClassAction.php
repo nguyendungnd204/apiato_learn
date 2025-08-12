@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Class\Actions;
 
-use App\Containers\AppSection\Class\Models\Class;
+use App\Containers\AppSection\Class\Models\ClassModel;
 use App\Containers\AppSection\Class\Tasks\CreateClassTask;
 use App\Containers\AppSection\Class\UI\API\Requests\CreateClassRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -14,11 +14,9 @@ final class CreateClassAction extends ParentAction
     ) {
     }
 
-    public function run(CreateClassRequest $request): Class
+    public function run(CreateClassRequest $request): ClassModel
     {
-        $data = $request->sanitize([
-            // add your request data here
-        ]);
+        $data = $request->sanitizeInput();
 
         return $this->createClassTask->run($data);
     }

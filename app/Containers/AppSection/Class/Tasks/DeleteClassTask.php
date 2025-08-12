@@ -12,7 +12,7 @@ final class DeleteClassTask extends ParentTask
     ) {
     }
 
-    public function run($id): bool
+    public function run(int $id): bool
     {
         return $this->repository->delete($id);
     }

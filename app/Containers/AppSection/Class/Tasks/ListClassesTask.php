@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Class\Tasks;
 
 use App\Containers\AppSection\Class\Data\Repositories\ClassRepository;
 use App\Ship\Parents\Tasks\Task as ParentTask;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 final class ListClassesTask extends ParentTask
 {
@@ -12,7 +13,7 @@ final class ListClassesTask extends ParentTask
     ) {
     }
 
-    public function run(): mixed
+    public function run(): LengthAwarePaginator
     {
         return $this->repository->addRequestCriteria()->paginate();
     }

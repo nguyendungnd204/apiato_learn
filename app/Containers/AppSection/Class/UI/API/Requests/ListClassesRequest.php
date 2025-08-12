@@ -10,6 +10,19 @@ final class ListClassesRequest extends ParentRequest
 
     public function rules(): array
     {
-        return [];
+        return [
+            'search' => 'sometimes|string',
+            'orderBy' => 'sometimes|string|in:id,class_code,name,created_at',
+            'sortedBy' => 'sometimes|string|in:asc,desc',
+            'page' => 'sometimes|integer|min:1',
+            'limit' => 'sometimes|integer|min:1|max:100',
+        ];
+    }
+
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
     }
 }

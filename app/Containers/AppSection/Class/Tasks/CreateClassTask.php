@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Class\Tasks;
 
 use App\Containers\AppSection\Class\Data\Repositories\ClassRepository;
-use App\Containers\AppSection\Class\Models\Class;
+use App\Containers\AppSection\Class\Models\ClassModel;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 final class CreateClassTask extends ParentTask
@@ -13,7 +13,7 @@ final class CreateClassTask extends ParentTask
     ) {
     }
 
-    public function run(array $data): Class
+    public function run(array $data): ClassModel
     {
         return $this->repository->create($data);
     }

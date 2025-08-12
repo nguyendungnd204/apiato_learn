@@ -14,4 +14,11 @@ final class FindClassByIdRequest extends ParentRequest
     {
         return [];
     }
+
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
 }

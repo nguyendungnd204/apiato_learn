@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Class\Actions;
 use App\Containers\AppSection\Class\Tasks\ListClassesTask;
 use App\Containers\AppSection\Class\UI\API\Requests\ListClassesRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 final class ListClassesAction extends ParentAction
 {
@@ -13,7 +14,7 @@ final class ListClassesAction extends ParentAction
     ) {
     }
 
-    public function run(ListClassesRequest $request): mixed
+    public function run(ListClassesRequest $request): LengthAwarePaginator
     {
         return $this->listClassesTask->run();
     }
