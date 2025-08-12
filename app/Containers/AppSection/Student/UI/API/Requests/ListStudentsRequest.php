@@ -14,6 +14,6 @@ final class ListStudentsRequest extends ParentRequest
     }
     public function authorize(): bool
     {
-        return true; // Authorization logic can be added here if needed
+        return true;
     }
 }

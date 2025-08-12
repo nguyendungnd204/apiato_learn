@@ -14,4 +14,9 @@ final class DeleteStudentRequest extends ParentRequest
     {
         return [];
     }
+    
+    public function authorize(): bool
+    {
+        return true;
+    }
 }

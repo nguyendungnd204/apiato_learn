@@ -25,4 +25,14 @@ final class UpdateStudentRequest extends ParentRequest
             'enrollment_date' => 'nullable|date',
         ];
     }
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function sanitizeInput(): array
+    {
+        return $this->validated();
+    }
 }

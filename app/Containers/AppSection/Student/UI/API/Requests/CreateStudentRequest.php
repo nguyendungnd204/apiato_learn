@@ -28,4 +28,8 @@ final class CreateStudentRequest extends ParentRequest
     {
         return true; 
     }
+    public function sanitizeInput(): array
+    {
+        return $this->validated();
+    }
 }

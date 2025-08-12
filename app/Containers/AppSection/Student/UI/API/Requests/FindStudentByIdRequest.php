@@ -14,4 +14,9 @@ final class FindStudentByIdRequest extends ParentRequest
     {
         return [];
     }
+
+    public function authorize(): bool
+    {
+        return true;
+    }
 }
