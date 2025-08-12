@@ -12,4 +12,9 @@ final class RevokeTokenRequest extends ParentRequest
     {
         return [];
     }
+
+    public function authorize(): bool
+    {
+        return $this->user() !== null;
+    }
 }

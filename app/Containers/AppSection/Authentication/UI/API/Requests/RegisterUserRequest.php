@@ -24,4 +24,14 @@ final class RegisterUserRequest extends ParentRequest
             'birth' => 'date',
         ];
     }
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function sanitizeInput(): array
+    {
+        return $this->validated();
+    }
 }
