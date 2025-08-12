@@ -18,4 +18,9 @@ final class ClassRepository extends ParentRepository
         'name' => 'like',
         'description' => 'like',
     ];
+
+    public function model(): string
+    {
+        return ClassModel::class;
+    }
 }

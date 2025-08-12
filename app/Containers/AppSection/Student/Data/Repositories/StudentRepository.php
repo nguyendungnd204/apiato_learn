@@ -15,4 +15,9 @@ final class StudentRepository extends ParentRepository
     protected $fieldSearchable = [
         // 'id' => '=',
     ];
+
+    public function model(): string
+    {
+        return Student::class;
+    }
 }

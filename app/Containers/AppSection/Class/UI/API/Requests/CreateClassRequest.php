@@ -21,9 +21,7 @@ final class CreateClassRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return true;
     }
 
     public function sanitizeInput(): array

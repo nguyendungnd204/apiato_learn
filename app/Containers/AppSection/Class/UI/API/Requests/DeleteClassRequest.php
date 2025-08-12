@@ -17,8 +17,6 @@ final class DeleteClassRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return true;
     }
 }
