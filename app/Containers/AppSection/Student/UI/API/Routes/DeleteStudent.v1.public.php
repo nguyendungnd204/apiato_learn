@@ -25,5 +25,5 @@
 use App\Containers\AppSection\Student\UI\API\Controllers\DeleteStudentController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('students/{id}', DeleteStudentController::class);
+Route::delete('students/{id}', DeleteStudentController::class)->middleware(['auth:api']);
 

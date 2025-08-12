@@ -25,5 +25,5 @@
 use App\Containers\AppSection\Student\UI\API\Controllers\FindStudentByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('students/{id}', FindStudentByIdController::class);
+Route::get('students/{id}', FindStudentByIdController::class)->middleware(['auth:api']);
 
