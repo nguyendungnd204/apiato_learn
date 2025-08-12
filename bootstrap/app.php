@@ -28,6 +28,7 @@ return Application::configure(basePath: $basePath)
             ValidateAppId::class,
         ]);
         $middleware->api(append: [
+            \Illuminate\Http\Middleware\HandleCors::class,
             ValidateJsonContent::class,
             ProcessETag::class,
         ]);
