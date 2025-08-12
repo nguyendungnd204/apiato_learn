@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Class\Data\Factories;
 
-use App\Containers\AppSection\Class\Models\Class;
+use App\Containers\AppSection\Class\Models\ClassModel;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 
 /**
@@ -13,7 +13,7 @@ use App\Ship\Parents\Factories\Factory as ParentFactory;
 final class ClassFactory extends ParentFactory
 {
     /** @var class-string<TModel> */
-    protected $model = Class::class;
+    protected $model = ClassModel::class;
 
     public function definition(): array
     {
