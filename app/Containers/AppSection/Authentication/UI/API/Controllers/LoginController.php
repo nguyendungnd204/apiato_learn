@@ -19,13 +19,18 @@ final class LoginController extends ApiController
 {
     public function __invoke(LoginRequest $request, IssueTokenAction $action): JsonResponse
     {
-        $result = $action->run(
-            UserCredential::createFrom($request),
-        );
+        try {
+            $result = $action->run(
+                UserCredential::createFrom($request),
+            );
 
-        //dd($result);
-
-        return Response::create($result, PasswordTokenTransformer::class)->ok()
-            ->withCookie($result->refreshToken->asCookie());
+            return Response::create($result, PasswordTokenTransformer::class)->ok()
+                ->withCookie($result->refreshToken->asCookie());
+                
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Email hoặc mật khẩu không đúng'
+            ], 401);
+        }
     }
 }
