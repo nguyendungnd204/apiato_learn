@@ -12,6 +12,14 @@ final class GetUserProfileController extends ApiController
 {
     public function __invoke(): JsonResponse
     {
-        return Response::create(Auth::user(), UserTransformer::class)->ok();
+        try {
+            if (!Auth::check()) {
+                return Response::errorUnauthorized('User not authenticated');
+            }
+            return Response::create(Auth::user(), UserTransformer::class)->ok();
+        } catch (\Exception $e) {
+            return Response::errorInternal($e->getMessage());
+        }
+        
     }
 }
