@@ -7,14 +7,19 @@ use App\Containers\AppSection\Student\Actions\SearchStudentAction;
 use App\Containers\AppSection\Student\UI\API\Requests\SearchStudentRequest;
 use App\Containers\AppSection\Student\UI\API\Transformers\StudentTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 
 final class SearchStudentController extends ApiController
 {
     public function __invoke(SearchStudentRequest $request, SearchStudentAction $action): JsonResponse
     {
-        $students = $action->run($request);
+        try {
+            $students = $action->run($request);
 
-        return Response::create($students, StudentTransformer::class)->ok();
+            return Response::create($students, StudentTransformer::class)->ok();
+        } catch (\Exception $e) {
+            return Response::error('An unexpected error occurred: ' . $e->getMessage(), 500);
+        }
     }
 }

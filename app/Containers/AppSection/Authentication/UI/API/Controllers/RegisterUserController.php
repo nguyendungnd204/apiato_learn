@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 
 final class RegisterUserController extends ApiController
@@ -18,6 +19,8 @@ final class RegisterUserController extends ApiController
             $user = $action->transactionalRun($request->sanitizeInput());
 
             return Response::create($user, UserTransformer::class)->ok();
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return Response::error('Validation failed', 422, $e->errors());
         } catch (\Exception $e) {
             return Response::error($e->getMessage(), 400);
         }

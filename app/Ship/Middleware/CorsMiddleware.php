@@ -31,17 +31,17 @@ class CorsMiddleware
         }
 
         // Add CORS headers
-        $response->headers->set('Access-Control-Allow-Methods', $allowedMethods);
-        $response->headers->set('Access-Control-Allow-Headers', $allowedHeaders);
+        $response->headers->set('Access-Control-Allow-Methods', implode(', ', $allowedMethods));
+        $response->headers->set('Access-Control-Allow-Headers', implode(', ', $allowedHeaders));
         $response->headers->set('Access-Control-Allow-Credentials', $allowedCredentials);
 
         // Handle preflight requests
         if ($request->getMethod() === 'OPTIONS') {
             return response('', 200)
                 ->header('Access-Control-Allow-Origin', '*')
-                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-                ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With')
-                ->header('Access-Control-Allow-Credentials', 'true');
+                ->header('Access-Control-Allow-Methods', implode(', ', $allowedMethods))
+                ->header('Access-Control-Allow-Headers', implode(', ', $allowedHeaders))
+                ->header('Access-Control-Allow-Credentials', $allowedCredentials);
         }
 
         return $response;

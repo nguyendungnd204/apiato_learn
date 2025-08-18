@@ -13,6 +13,7 @@ final class UpdateStudentRequest extends ParentRequest
     public function rules(): array
     {
         return [
+            'student_code' => 'sometimes|string|max:255|unique:students,student_code,' . $this->id,
             'first_name' => 'sometimes|string|max:255',
             'last_name' => 'sometimes|string|max:255',
             'dob' => 'sometimes|date',
