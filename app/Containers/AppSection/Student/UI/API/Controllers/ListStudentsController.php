@@ -13,8 +13,12 @@ final class ListStudentsController extends ApiController
 {
     public function __invoke(ListStudentsRequest $request, ListStudentsAction $action): JsonResponse
     {
-        $students = $action->run($request);
-
-        return Response::create($students, StudentTransformer::class)->ok();
+        try {
+            $students = $action->run($request);
+            return Response::create($students, StudentTransformer::class)->ok();
+        } catch (\Exception $e) {
+            return Response::error($e->getMessage(), 400);
+        }
+        
     }
 }

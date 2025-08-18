@@ -14,8 +14,13 @@ final class RegisterUserController extends ApiController
 {
     public function __invoke(RegisterUserRequest $request, RegisterUserAction $action): JsonResponse
     {
-        $user = $action->transactionalRun($request->sanitizeInput());
+        try {
+            $user = $action->transactionalRun($request->sanitizeInput());
 
-        return Response::create($user, UserTransformer::class)->ok();
+            return Response::create($user, UserTransformer::class)->ok();
+        } catch (\Exception $e) {
+            return Response::error($e->getMessage(), 400);
+        }
+       
     }
 }
